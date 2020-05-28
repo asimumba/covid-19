@@ -31,9 +31,10 @@ zed_cases <- zm_covid %>%
   filter(confirmed_cases != 0) %>%
   ggplot(aes(x = date_reported , y = confirmed_cases, group = month)) +
   geom_line(size = 1, color = "#40004B") +
-  geom_text(aes(x = as.Date('2020-05-19'),
+  geom_text(aes(x = as.Date('2020-05-25'),
                 label = as.factor(confirmed_cases)),
             hjust = 0) +
+  coord_cartesian(clip = 'off') +
   transition_reveal(date_reported) +
   labs(title = 'Date: {frame_along}',
        subtitle = "Trend Analysis for confirmed COVID-19 Cases in Zambia",
@@ -72,6 +73,7 @@ ggplot(aes(x = date_reported,
   geom_text(aes(x = as.Date('2020-05-19'),
                 label = as.factor(confirmed_cases)),
             hjust = 0, show.legend = FALSE) +
+  coord_cartesian(clip = 'off') +
   labs(title = 'Date: {frame_along}',
        x = 'Period',
        y = 'Confirmed Cases',
